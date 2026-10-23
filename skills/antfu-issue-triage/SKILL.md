@@ -38,6 +38,9 @@ Go through the open issues and PRs of the **current repo** (`gh repo view --json
    - **Demand.** Count positive reactions (👍 ❤️ 🎉 🚀), negative ones, distinct commenters, "+1" comments, and folded-in duplicates. Rate `High / Medium / Low` for the repo's size and show the raw numbers. Recent activity on an old item means it is still wanted.
 5. **Present the plan** as the tables below, **Stop to ask for confirmation**. Run no write command in this turn.
 6. **Execute** approved rows only, one at a time: comment, then label, then close. Stop on the first API error and report it. End with a done/failed table with links.
+   - Run one issue per command (comment, label, and close for that issue chained with `&&`). Do not batch many issues in one script or loop: bulk write commands can be blocked by the permission classifier. If a command is blocked, do not work around it. Split it into smaller per-issue commands, and tell the user.
+   - Create approved new labels first, in their own command.
+   - For rows the user adds after the tables (for example "also close #4"), write a short fresh comment in the same style and show it in the final report.
 
 ## Recommended Labels
 
